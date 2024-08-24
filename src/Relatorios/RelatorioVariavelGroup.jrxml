@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioVariavelGroup" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b9337a5f-2877-4a30-ac32-16fbc69a524d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    d.disciplina AS disciplina_nome,
+    p.nome AS professor_nome,
+    COUNT(t.id) AS total_tarefas
+FROM 
+    tarefa t
+JOIN 
+    professor p ON t.professor_id = p.id
+JOIN 
+    disciplina d ON p.disciplina_id = d.id
+WHERE 
+    t.status IN ('Fazer', 'Fazendo')
+GROUP BY 
+    d.disciplina, p.nome
+ORDER BY 
+    d.disciplina, p.nome
+]]>
+	</queryString>
+	<field name="disciplina_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="disciplina_nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="disciplina_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="disciplina"/>
+	</field>
+	<field name="total_tarefas" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="total_tarefas"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_tarefas"/>
+	</field>
+	<variable name="Variable_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_tarefas}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="10" width="310" height="30" uuid="606c2e4c-00eb-4161-ad33-092a343b8cc6"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATIVIDADES PARA CONCLUIR]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="89" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="90" height="21" uuid="657bfea3-e2f3-4a8e-8451-f3bdcd560591"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISCIPLINA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="1" width="140" height="22" uuid="78cf47e7-13b2-4bac-b262-68abc445e625"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disciplina_nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="1" width="100" height="18" uuid="d876c81e-952e-410d-8efb-840f5031c486"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QUANTIDADE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="1" width="100" height="24" uuid="afe40de2-b417-42d5-9de7-187c133cafaa"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_tarefas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="343" y="0" width="100" height="26" uuid="63482815-43d2-4c04-b457-3c78851f7d38"/>
+				<textElement>
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Variable_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="173" y="3" width="170" height="26" uuid="1b2486b6-3b64-4c66-ba43-52096415dcbc"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL SEM CONCLUIR:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="123" splitType="Stretch">
+			<textField>
+				<reportElement x="530" y="80" width="20" height="18" uuid="d86616a0-96d4-43f2-8eed-0d8513c83049"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="220" y="80" width="30" height="18" uuid="6b908f20-9134-466d-9571-40f8016b92d6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="258" y="80" width="64" height="22" uuid="f73938a6-2416-4b4a-a6b9-546f22c9fdb9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

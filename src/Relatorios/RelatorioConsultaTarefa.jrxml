@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioConsultaTarefa" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8852c8ea-cc1e-469a-b482-4f0a1f8abe5b">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cHJvZmVzc29yICwxODEsMTUsMTA5NTBlNWMtZTk0My00YzY0LWIyY2QtMDg1MDk0ZGMwYmQyO3Rh
+cmVmYSAsMTUsMTUsYmFjMjM1MzAtZGQ5OS00YWY1LWE0ZGUtNmY5N2Q2ZTczMGNiO2Rpc2NpcGxp
+bmEgLDM0OCwzMCxkODA0ZjZkNS02YWVhLTQ3ZDQtYTY4Yy1mMTk1ZGUzZTFhNTY7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<parameter name="codigo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT t.id AS tarefa_id,
+	t.descricao AS tarefa_descricao,
+	t.status AS tarefa_status,
+	t.prazo AS tarefa_prazo,
+	p.id AS professor_id,
+	p.nome AS professor_nome,
+	p.email AS professor_email,
+	p.paluno AS professor_paluno,
+	d.id AS disciplina_id,
+	d.disciplina AS disciplina_nome,
+	d.codigo AS disciplina_codigo,
+	d.turma AS disciplina_turma
+FROM tarefa t
+	JOIN professor p ON 
+	 t.professor_id = p.id 
+	JOIN disciplina d ON 
+	 p.disciplina_id = d.id 
+WHERE 
+	 d.codigo =  $P{codigo} ]]>
+	</queryString>
+	<field name="tarefa_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="tarefa_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="tarefa_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tarefa"/>
+	</field>
+	<field name="tarefa_descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tarefa_descricao"/>
+		<property name="com.jaspersoft.studio.field.label" value="tarefa_descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tarefa"/>
+	</field>
+	<field name="tarefa_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tarefa_status"/>
+		<property name="com.jaspersoft.studio.field.label" value="tarefa_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tarefa"/>
+	</field>
+	<field name="tarefa_prazo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tarefa_prazo"/>
+		<property name="com.jaspersoft.studio.field.label" value="tarefa_prazo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tarefa"/>
+	</field>
+	<field name="professor_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="professor_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="professor_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="professor"/>
+	</field>
+	<field name="professor_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="professor_nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="professor_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="professor"/>
+	</field>
+	<field name="professor_email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="professor_email"/>
+		<property name="com.jaspersoft.studio.field.label" value="professor_email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="professor"/>
+	</field>
+	<field name="professor_paluno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="professor_paluno"/>
+		<property name="com.jaspersoft.studio.field.label" value="professor_paluno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="professor"/>
+	</field>
+	<field name="disciplina_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="disciplina_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="disciplina_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="disciplina"/>
+	</field>
+	<field name="disciplina_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="disciplina_nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="disciplina_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="disciplina"/>
+	</field>
+	<field name="disciplina_codigo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="disciplina_codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="disciplina_codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="disciplina"/>
+	</field>
+	<field name="disciplina_turma" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="disciplina_turma"/>
+		<property name="com.jaspersoft.studio.field.label" value="disciplina_turma"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="disciplina"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="29" width="280" height="30" uuid="d3daa0c7-733d-45f7-9db4-09e28b701bcd"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TAREFA SELECIONADA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="10" width="180" height="30" uuid="e644c78b-0b93-4a97-9d90-3faa75cd4648"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO INFORMADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="10" width="170" height="30" uuid="2121b3eb-3b2e-40c8-a5b8-680530c3ee00"/>
+				<textElement textAlignment="Left">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disciplina_codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<break>
+				<reportElement x="0" y="10" width="560" height="1" uuid="6e98b81a-e793-481b-8bda-89313bb277fa"/>
+			</break>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="263" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="0" width="54" height="30" uuid="5cb71113-d604-42d3-b437-7d0edf771d60"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TURMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="30" width="100" height="30" uuid="b3fb6e05-01f8-4180-80d8-fbe72c51a411"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROFESSOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="60" width="100" height="30" uuid="9532fd23-63e4-47df-89ad-ed5f7a7e1aa4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="90" width="80" height="30" uuid="7fffc425-68dc-481d-ba4f-58a8842ece0a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PALUNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="180" width="100" height="30" uuid="1eed0c08-760a-4c8a-8d23-989c39695a62"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="120" width="100" height="30" uuid="89bee9f4-fddc-4606-9888-bb4c169ebf8b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="150" width="100" height="30" uuid="d1381875-d982-44b9-811c-9fc416b2d8d5"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRAZO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="0" width="160" height="30" uuid="88e057b1-8f22-41d3-8b74-07eb10807aad"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disciplina_turma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="30" width="160" height="30" uuid="2d1202d9-467b-4af1-b45b-2b8eaa52a452"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{professor_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="60" width="160" height="30" uuid="28e18e49-7e03-42ab-ae4d-b39bfb715f3f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{professor_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="90" width="160" height="30" uuid="0bf70f00-0abc-4d8d-9041-a1e311345928"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{professor_paluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="120" width="160" height="30" uuid="6db59d64-36e6-4920-b6dc-cf93b615b5c7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tarefa_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="150" width="160" height="30" uuid="645ed5d8-5afc-4a4b-9718-3a2bdd221424"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tarefa_prazo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="180" width="299" height="83" uuid="778320a2-faa4-452d-9ecb-ac917bf2b1b3"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tarefa_descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="56" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="74" splitType="Stretch">
+			<textField>
+				<reportElement x="530" y="57" width="26" height="14" uuid="0fa71e99-ba60-45c6-85ec-97919fcf71fb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="220" y="57" width="60" height="16" uuid="49965f18-329f-4bfc-b09b-3d6e8feddf33"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="280" y="57" width="80" height="14" uuid="4cd4e530-5f70-4d71-95e9-61e923dc951a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
